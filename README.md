@@ -2,7 +2,7 @@
 
 This repo is just a baseline for the creation of more complex apps using React + Redux, it has webpack for dev, test and build tasks, also, it provides a Test Example using Mocha + Chai + Ensyme.
 
-This repo has the basic things to statr a project with a decent directoy structure.
+This repo has the basic things to start a project with a decent directoy structure.
 
 ##How to use it
 Just clone it into your machine, and type this into your command line tool:
