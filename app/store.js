@@ -16,7 +16,8 @@ import reducers from './reducers/reducers'
  */
 const middleware = applyMiddleware(promise(), thunk, logger());
 
+// Create the unique APP store, remember, it should be immutable
 export default createStore(
-    reducers,
+    reducers, // Add the unique reducer that combines all of the others
     middleware
 );

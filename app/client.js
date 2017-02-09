@@ -15,8 +15,8 @@ import About from './Pages/About'
 ReactDom.render(
     <Provider store={store} >
         <Router history={hashHistory}>
-            <Route path='/' component={Layout}>
-                <IndexRoute component={Index}></IndexRoute>
+            <Route component={Layout} path="/">
+                <IndexRoute component={Index} />
                 <Route path="about" component={About}/>
             </Route>
         </Router>

@@ -5,7 +5,7 @@ import React, { Component } from 'react'
 
 class ToDoItem extends Component{
     handleDeleteClick(event){
-        console.log(this.props.id);
+        this.props.deleteTodo(this.props.id);
     }
 
     render(){

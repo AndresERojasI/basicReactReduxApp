@@ -1,16 +1,13 @@
 /**
  * Created by andresrojas on 2/2/17.
  */
-import React, { Component } from 'react';
-import { connect } from "react-redux";
+import React from 'react';
+
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
-import style from './style.css'
+import Style from './style.css'
 
-export default class Layout extends Component{
-    constructor(){
-        super();
-    }
+export default class Layout extends React.Component{
 
     render(){
         return(

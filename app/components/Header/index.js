@@ -1,10 +1,14 @@
 /**
  * Created by andresrojas on 2/2/17.
  */
-import React, { Component } from 'react';
-import {Link} from 'react-router';
+import React from 'react';
+import { Link } from 'react-router'
 
-export default class Header extends Component{
+export default class Footer extends React.Component{
+    constructor(){
+        super();
+    }
+
     render(){
         return(
             <header>

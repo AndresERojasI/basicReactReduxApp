@@ -2,48 +2,39 @@
  * Created by andresrojas on 2/2/17.
  */
 import React, { Component } from 'react';
+import { connect } from "react-redux"
+
 import ToDoItem from '../../components/ToDoItem'
 import ToDoCreate from '../../components/ToDoCreate'
-import TodoStore from '../../store'
+
 import * as TodoActions from '../../actions/TodoActions'
 
+@connect((store) => {
+    console.log('STORE: ', store);
+    return {
+        todos: store.todos.todos
+    }
+})
 export default class Index extends Component{
-    constructor(){
-        super();
-        this.getTodos = this.getTodos.bind(this);
-    }
-
-    componentWillMount(){
-        this.getTodos();
-    }
-
-    componentWillUnmount(){
-        //remove listeners
-    }
-
-    getTodos(){
-        this.setState(
-            {
-                todos: [
-                    {task: "go shopping",id: 1},
-                    {task: "fix car",id: 2},
-                    {task: "meeting with michael",id: 3}
-                ]
-            }
-        );
+    componentWillMount() {
+        this.props.dispatch(TodoActions.loadTodos())
     }
 
     createTodo(text){
-        TodoActions.createTodo(text);
+        this.props.dispatch(TodoActions.createTodo(text))
+    }
+
+    deleteTodo(id){
+        this.props.dispatch(TodoActions.deleteTodo(id))
     }
 
     render(){
-        const { todos } = this.state;
+        const { todos } = this.props;
 
         const todosList = todos.map((item) => {
             return (
                 <li key={item.id}>
-                    <ToDoItem {...item} />
+                    <ToDoItem {...item} deleteTodo={this.deleteTodo.bind(this)}/>
                 </li>
             )
         });
@@ -55,6 +46,7 @@ export default class Index extends Component{
                     {todosList}
                 </ul>
             </section>
+
         )
     }
 }
