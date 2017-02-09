@@ -1,5 +1,5 @@
 {
-  "presets": ["react", "airbnb", "es2015"],
+  "presets": ["react", "airbnb", "es2015", "stage-1"],
   "env": {
     // only enable it when process.env.NODE_ENV is 'development' or undefined
     "development": {

@@ -3,6 +3,8 @@
  */
 import React, { Component } from 'react';
 import { connect } from "react-redux"
+import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table';
+import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 
 import ToDoItem from '../../components/ToDoItem'
 import ToDoCreate from '../../components/ToDoCreate'
@@ -10,7 +12,6 @@ import ToDoCreate from '../../components/ToDoCreate'
 import * as TodoActions from '../../actions/TodoActions'
 
 @connect((store) => {
-    console.log('STORE: ', store);
     return {
         todos: store.todos.todos
     }
@@ -33,18 +34,29 @@ export default class Index extends Component{
 
         const todosList = todos.map((item) => {
             return (
-                <li key={item.id}>
-                    <ToDoItem {...item} deleteTodo={this.deleteTodo.bind(this)}/>
-                </li>
+                <ToDoItem key={item.id} {...item} deleteTodo={this.deleteTodo.bind(this)}/>
             )
         });
 
         return(
-            <section classID="indexPage">
+            <section>
                 <ToDoCreate createAction={this.createTodo.bind(this)}/>
-                <ul>
-                    {todosList}
-                </ul>
+                <Card classID="indexPage">
+                    <CardText>
+                        <Table>
+                            <TableHeader>
+                                <TableRow>
+                                    <TableHeaderColumn>ID</TableHeaderColumn>
+                                    <TableHeaderColumn>Task Description</TableHeaderColumn>
+                                    <TableHeaderColumn>Actions</TableHeaderColumn>
+                                </TableRow>
+                            </TableHeader>
+                            <TableBody>
+                                { todosList }
+                            </TableBody>
+                        </Table>
+                    </CardText>
+                </Card>
             </section>
 
         )

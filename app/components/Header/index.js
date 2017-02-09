@@ -3,6 +3,10 @@
  */
 import React from 'react';
 import { Link } from 'react-router'
+import AppBar from 'material-ui/AppBar';
+import * as Colors from 'material-ui/styles/colors';
+import RaisedButton from 'material-ui/RaisedButton';
+
 
 export default class Footer extends React.Component{
     constructor(){
@@ -10,10 +14,14 @@ export default class Footer extends React.Component{
     }
 
     render(){
+        let menuItems = [
+            <Link to="/" key={'index'}><RaisedButton label="Home" /></Link>,
+            <Link to="about" key={'about'}><RaisedButton label="About" /></Link>
+        ];
+
         return(
             <header>
-                <Link to="/">Index</Link>
-                <Link to="about">About</Link>
+                <AppBar title="My To-Do list" showMenuIconButton={false} children={menuItems}/>
             </header>
         )
     }

@@ -7,8 +7,6 @@ const DefaultState = {
 
 const todoReducer = function(state=DefaultState, action){
 
-    console.log('ACTION: ', action);
-
     if(action.type === 'LOAD_TODOS'){
         return {
             ...state,

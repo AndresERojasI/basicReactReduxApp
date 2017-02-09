@@ -2,7 +2,10 @@
  * Created by andresrojas on 2/2/17.
  */
 import React, { Component } from 'react'
-import TextDisplay from '../ToDoItem/'
+import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+import RaisedButton from 'material-ui/RaisedButton';
+import TextField from 'material-ui/TextField';
+
 
 class ToDoCreate extends Component{
     constructor(props, context){
@@ -20,7 +23,7 @@ class ToDoCreate extends Component{
         }
 
         this.setState({
-            task : ''
+            task : ""
         });
     }
 
@@ -33,15 +36,17 @@ class ToDoCreate extends Component{
 
     render(){
         return (
-            <div>
-                <input
-                    type="text"
-                    placeholder="Task description"
-                    value={this.state.task}
-                    onChange={this.handleChange.bind(this)}
-                />
-                <button onClick={this.addTask.bind(this)}>Add Task</button>
-            </div>
+            <Card>
+                <CardText>
+                    <TextField
+                        hintText="Task Description"
+                        floatingLabelText="Task description"
+                        defaultValue={this.state.task}
+                        onChange={this.handleChange.bind(this)}
+                    />
+                    <RaisedButton label='Add Task' onClick={this.addTask.bind(this)}/>
+                </CardText>
+            </Card>
 
         )
     }
